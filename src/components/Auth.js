@@ -1,14 +1,50 @@
 import React from "react";
 import '../App.css'
+import axios from 'axios';
 
 
 class Auth extends React.Component {
-  
+  constructor(props) {
+    super(props);
+  }
 
     state = {
-      username: '',
-      password: '',
+      first_name: '',
+      last_name: '',  
+      sign_up_email: '',
+      sign_up_password: '',
+      password_confirmation: '',
+      registrationErrors: '',
       isActive: false
+    }
+
+    handleSignupSubmit=(e) => {
+        
+      axios.post("http://localhost:3000/registrations", {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        email: this.state.sign_up_email, 
+        password: this.state.sign_up_password, 
+        password_confirmation: this.state.password_confirmation
+      },
+      { withCredentials: true } 
+      )
+      .then(response => {
+          if (response.data.status === 'created') {
+           
+         this.props.handleSuccessfulSignup(response.data);
+          }
+      })
+      .catch(error => {console.log("registration error", error)
+    })
+    e.preventDefault()
+    }
+    
+    handleSignupChange=(e)=> {
+    console.log(e.target.value)
+    this.setState({
+        [e.target.name]: e.target.value
+    })
     }
     
     signUpRight= () => {
@@ -25,12 +61,12 @@ class Auth extends React.Component {
 
   
   render() {
-   
+   console.log(this.props)
     return (
       <div className= "page-container">
       <div className={this.state.isActive ? "right-panel-active" : null} id="container">
 	<div className="form-container sign-up-container">
-		<form action="#">
+		<form onSubmit={this.handleSignupSubmit} action="#">
 			<h1>Create Account</h1>
 			<div className="social-container">
 				<a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
@@ -38,12 +74,15 @@ class Auth extends React.Component {
 				<a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
 			</div>
 			{/* <span>or use your email for registration</span> */}
-			<input type="text" placeholder="Name" />
-			<input type="password" placeholder="Password" />
-      <input type="text" placeholder="Bio" />
-      <input type="file" placeholder="Profile Pic" />
+			<input type="text" name="first_name"placeholder="First Name" value={this.state.first_name} onChange={this.handleSignupChange} required/>
+			<input type="text" name="last_name"placeholder="Last Name" value={this.state.last_name} onChange={this.handleSignupChange} required/>
+            <input type="email" name="sign_up_email" placeholder="Email" value={this.state.email} onChange={this.handleSignupChange} required/>
+			<input type="password" name="sign_up_password" placeholder="Password" value={this.state.password} onChange={this.handleSignupChange} required />
+			<input type="password" name="password_confirmation" placeholder="Password Confirmation" value={this.state.password_confirmation} onChange={this.handleSignupChange} required />
+      {/* <input type="text" placeholder="Bio" />
+      <input type="file" placeholder="Profile Pic" /> */}
       
-			<button>Sign Up</button>
+			<button type="submit">Sign Up</button>
 		</form>
 	</div>
 	<div className="form-container sign-in-container">
@@ -55,7 +94,7 @@ class Auth extends React.Component {
 				<a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
 			</div>
 			{/* <span>or use your account</span> */}
-			<input type="text" placeholder="Name" />
+			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Password" />
 			{/* <a href="#">Forgot your password?</a> */}
 			<button>Sign In</button>
