@@ -15,6 +15,8 @@ class Auth extends React.Component {
       sign_up_password: '',
       password_confirmation: '',
       registrationErrors: '',
+      login_email: '',
+      login_password: '',
       isActive: false
     }
 
@@ -36,6 +38,28 @@ class Auth extends React.Component {
           }
       })
       .catch(error => {console.log("registration error", error)
+    })
+    e.preventDefault()
+    }
+
+    handleLoginSubmit=(e) => {
+        
+      axios.post("http://localhost:3000/sessions", {
+
+        email: this.state.login_email, 
+        password: this.state.login_password, 
+      
+      },
+      { withCredentials: true } 
+      )
+      .then(response => {
+        
+          if (response.data.logged_in === true) {
+           
+         this.props.handleSuccessfulSignup(response.data);
+          }
+      })
+      .catch(error => {console.log("login error", error)
     })
     e.preventDefault()
     }
@@ -76,8 +100,8 @@ class Auth extends React.Component {
 			{/* <span>or use your email for registration</span> */}
 			<input type="text" name="first_name"placeholder="First Name" value={this.state.first_name} onChange={this.handleSignupChange} required/>
 			<input type="text" name="last_name"placeholder="Last Name" value={this.state.last_name} onChange={this.handleSignupChange} required/>
-            <input type="email" name="sign_up_email" placeholder="Email" value={this.state.email} onChange={this.handleSignupChange} required/>
-			<input type="password" name="sign_up_password" placeholder="Password" value={this.state.password} onChange={this.handleSignupChange} required />
+      <input type="email" name="sign_up_email" placeholder="Email" value={this.state.sign_up_email} onChange={this.handleSignupChange} required/>
+			<input type="password" name="sign_up_password" placeholder="Password" value={this.state.sign_up_password} onChange={this.handleSignupChange} required />
 			<input type="password" name="password_confirmation" placeholder="Password Confirmation" value={this.state.password_confirmation} onChange={this.handleSignupChange} required />
       {/* <input type="text" placeholder="Bio" />
       <input type="file" placeholder="Profile Pic" /> */}
@@ -86,7 +110,7 @@ class Auth extends React.Component {
 		</form>
 	</div>
 	<div className="form-container sign-in-container">
-		<form action="#">
+		<form onSubmit={this.handleLoginSubmit} action="#">
 			<h1>Sign in</h1>
 			<div className="social-container">
 				<a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
@@ -94,10 +118,10 @@ class Auth extends React.Component {
 				<a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
 			</div>
 			{/* <span>or use your account</span> */}
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+      <input type="email" name="login_email" placeholder="Email" value={this.state.login_email} onChange={this.handleSignupChange} required/>
+      <input type="password" name="login_password" placeholder="Password" value={this.state.login_password} onChange={this.handleSignupChange} required />
 			{/* <a href="#">Forgot your password?</a> */}
-			<button>Sign In</button>
+			<button type="submit">Sign In</button>
 		</form>
 	</div>
 	<div className="overlay-container">
