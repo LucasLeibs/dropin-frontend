@@ -8,6 +8,7 @@ import Home from './containers/Home'
 import AuthContainer from './containers/AuthContainer'
 import axios from 'axios'
 import NavBar from './components/NavBar'
+import EventPageContainer from './containers/EventPageContainer'
 
 class App extends React.Component {
   constructor() {
@@ -78,6 +79,10 @@ handleLogin(data)  {
         <Route exact path={"/events"} 
         render={props => (
           <MapContainer {...props}  loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
+        )} />
+        <Route exact path={`/event/show/`} 
+        render={props => (
+          <EventPageContainer {...props}  loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
         )} />
       </Switch>
       </div>

@@ -72,7 +72,7 @@
   /* HOME PAGE */
   
   .HomePage {
-    
+    padding: 0px 20px;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%   ;
     grid-template-rows: 25% 25% 25% 25% ;
@@ -88,20 +88,21 @@
   .welcome-message {
     
     grid-column-start: 1;
-   
+   padding-left: 10px;
+   padding-right: 10px
   }
   .welcome-message2 {
-    
+    text-align: center;
     grid-column-start: 2;
    
   }
   .welcome-message3 {
-    
+    text-align: center;
     grid-column-start: 3;
  
   }
   .welcome-message4 {
-    
+    text-align: center;
     grid-column-start: 4;
  
   }
@@ -128,6 +129,11 @@
 
   }
 /* MAP STYLING */
+.event-card {
+    font-size: 11px;
+    font-weight: bold;
+}
+
 .overlays {
     margin-bottom: 100px;
 }
@@ -240,7 +246,7 @@ a {
     width: 100%;
 }
 
-button { 
+/* button { 
     border-radius: 20px;
     border: 1px solid #ff4b2b;
     background:  #ff4b2b;
@@ -250,7 +256,7 @@ button {
     padding: 12px 45px;
     letter-spacing: 1px;
     transition: transform 80ms ease-in;
-}
+} */
 
 button:active {
     transform: scale(0.95);
