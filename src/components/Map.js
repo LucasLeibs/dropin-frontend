@@ -1,7 +1,9 @@
+import axios from 'axios';
 import React from 'react'; 
 import ReactMapGL, {GeolocateControl, NavigationControl, Marker, Popup} from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import '../map_pin.png'
 
 
 class Map extends React.Component {
@@ -10,7 +12,8 @@ class Map extends React.Component {
     longitude:-94.692584,
     latitude: 42.188877,
     zoom: 3.5
-    },
+    }
+  
 }
 
     myMap = React.createRef()
@@ -21,7 +24,8 @@ class Map extends React.Component {
             viewport: {...this.state.viewport, ...viewport}
         })
     }
-
+    
+    
     // componentDidMount() {
         
        
@@ -34,8 +38,9 @@ class Map extends React.Component {
     //     zoom: this.state.zoom
     //     });
     // }
-  
+    
     render() {
+        console.log("pins",this.props.pins)
         return (
             <div className="mapContainer">
                  <div
@@ -56,10 +61,16 @@ class Map extends React.Component {
                 width= "100%"
                 height="100%"
                 onViewportChange={this.handleViewportChange}
-                
+               
                 mapStyle='mapbox://styles/mapbox/streets-v11'
                 mapboxApiAccessToken = 'pk.eyJ1IjoibHVjYXNsZWlicyIsImEiOiJja2Z5OGVmb20xMjlxMnRvazY0OTlqMXVkIn0.G1QPTc55QLc2rXKcO47jzw'>
-                  
+                 {this.props.pins.map((pin) => (
+                    <Marker key = {pin.id} latitude={pin.latitude} longitude={pin.longitude}>
+                        <button className="pin">
+                            {pin.name}
+                        </button>
+                    </Marker>
+                ))}
                <Geocoder mapRef={this.myMap} containerRef={this.geocoderContainerRef}  mapboxApiAccessToken = 'pk.eyJ1IjoibHVjYXNsZWlicyIsImEiOiJja2Z5OGVmb20xMjlxMnRvazY0OTlqMXVkIn0.G1QPTc55QLc2rXKcO47jzw' onViewportChange={this.handleViewportChange} />
                {/* <GeolocateControl/>
                <NavigationControl/> */}

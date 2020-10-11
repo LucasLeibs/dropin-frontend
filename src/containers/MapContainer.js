@@ -4,7 +4,9 @@ import Map from '../components/Map.js'
 import axios from 'axios'
 
 class MapContainer extends React.Component {
-
+state = {
+    pins: []
+}
 
 
 handleLogoutClick() {
@@ -13,14 +15,18 @@ handleLogoutClick() {
     })
     .catch(error => {console.log("logout error", error)})
 }
-
+componentDidMount() {
+    axios.get('http://localhost:3000/events',{withCredentials: true})
+    .then(response => {this.setState({pins: response.data})
+})
+}
 render() {
     console.log("map", this.props)
     return (
         <div>
             <h1>status: {this.props.loggedInStatus}</h1>
             <button onClick={() => this.handleLogoutClick()}>Logout</button>
-        <Map />
+        <Map pins = {this.state.pins} />
         
         </div>
     )

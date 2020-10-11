@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import './App.css';
 import MapContainer from './containers/MapContainer'
@@ -6,6 +7,7 @@ import {BrowserRouter, Switch, Route} from "react-router-dom"
 import Home from './containers/Home'
 import AuthContainer from './containers/AuthContainer'
 import axios from 'axios'
+import NavBar from './components/NavBar'
 
 class App extends React.Component {
   constructor() {
@@ -60,8 +62,10 @@ handleLogin(data)  {
  
   render() {
   return (
-    <div className="App">
+    
       <BrowserRouter>
+      <div className="App">
+        <NavBar/>
       <Switch>
         <Route exact path={"/"} 
         render={props => (
@@ -76,9 +80,9 @@ handleLogin(data)  {
           <MapContainer {...props}  loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
         )} />
       </Switch>
-     
+      </div>
      </BrowserRouter>
-    </div>
+ 
   );
 }
 }
