@@ -23,7 +23,7 @@ componentDidMount() {
 render() {
     console.log("map", this.props)
     return (
-        <div>
+        <div className="map">
             <h1>status: {this.props.loggedInStatus}</h1>
             <button onClick={() => this.handleLogoutClick()}>Logout</button>
         <Map pins = {this.state.pins} />

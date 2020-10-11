@@ -6,8 +6,8 @@ class NavBar extends React.Component {
 render() {
     return (
         <div className="navbar"> 
-<NavLink to="#"><img src= {logo} alt= 'oasis logo' className='logo'></img> </NavLink>   
-<NavLink to="/"> Home </NavLink> 
+      
+<NavLink to="/"> <img src= {logo} alt= 'oasis logo' className='logo'></img></NavLink> 
 <NavLink to="/events"> Find Events </NavLink> 
 <NavLink to="#"> Dashboard </NavLink> 
 </div>
