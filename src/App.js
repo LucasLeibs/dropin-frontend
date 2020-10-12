@@ -83,7 +83,7 @@ componentDidMount() {
           )} />
         <Route exact path={"/events"} 
         render={props => (
-          <MapContainer {...props}  loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
+          <MapContainer {...props} user ={this.state.user} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
         )} />
         <Route exact path={`/event/:EventId`} 
         render={(props) => {
@@ -91,7 +91,7 @@ componentDidMount() {
           const EventId = props.match.params.EventId
           const event = this.state.allEvents.find(e => e.id === parseInt(EventId))
          
-          return event ?  <EventShowPage {...props} event = {event} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>
+          return event ?  <EventShowPage {...props} user = {this.state.user} event = {event} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>
           : "Loading..." 
         }} />
       </Switch>

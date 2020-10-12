@@ -24,13 +24,15 @@ export default class EventCard extends PureComponent {
         <div>
           {displayName} |{' '}
         {/* <button onClick={()=> this.handleClick(info)}> */}
-        <button >
-           
-            <Link to={`/event/${info.id}`}>Drop-In</Link > 
-        </button>
+       
         </div>
         <img width={240} src={info.image} />
-     
+        <div>
+        <button >
+           
+           <Link to={`/event/${info.id}`}>Details</Link > 
+       </button>
+       </div>
       </div>
       
     );
