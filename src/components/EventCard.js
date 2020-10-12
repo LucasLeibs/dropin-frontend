@@ -1,25 +1,19 @@
 import * as React from 'react';
 import {PureComponent} from 'react';
-import EventContainerPage from '../containers/EventPageContainer'
+import EventShowPage from './EventShowPage'
+import {Link} from 'react-router-dom';
 
 export default class EventCard extends PureComponent {
-    state = {
-        showEvent: false
-    }
-
-    handleClick= (info) => {
-        this.setState({
-            showEvent: true
-        })
-    }
-    renderEvent = () => {
-        if(this.state.showEvent === true) {
-            window.location.href = 'event/show'
-            return (
-                <EventContainerPage event ={this.props.info}/>
-            )
-        }
-    }
+    
+  
+    // }
+    // renderEvent = (info) => {
+    //     if(this.state.showEvent === true) {
+    //        console.log("hello",info)
+    //         return (
+             
+    //     }
+    // }
   render() {
     const {info} = this.props;
     const displayName = `${info.name}, ${info.sport}`;
@@ -29,12 +23,14 @@ export default class EventCard extends PureComponent {
       <div className="event-card">
         <div>
           {displayName} |{' '}
-        <button onClick={()=> this.handleClick(info)}>
-            Drop-In
+        {/* <button onClick={()=> this.handleClick(info)}> */}
+        <button >
+           
+            <Link to={`/event/${info.id}`}>Drop-In</Link > 
         </button>
         </div>
         <img width={240} src={info.image} />
-       {this.renderEvent()}
+     
       </div>
       
     );

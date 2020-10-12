@@ -8,14 +8,15 @@ import Home from './containers/Home'
 import AuthContainer from './containers/AuthContainer'
 import axios from 'axios'
 import NavBar from './components/NavBar'
-import EventPageContainer from './containers/EventPageContainer'
+import EventShowPage from './components/EventShowPage'
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
     loggedInStatus: "NOT_LOGGED_IN", 
-    user: {}
+    user: {},
+    allEvents: []
   };
   this.handleLogin = this.handleLogin.bind(this);
  this.handleLogout = this.handleLogout.bind(this);
@@ -58,7 +59,11 @@ handleLogin(data)  {
   })
 }
 
-
+componentDidMount() {
+  axios.get('http://localhost:3000/events',{withCredentials: true})
+  .then(response => {this.setState({allEvents: response.data})
+})
+}
   
  
   render() {
@@ -80,10 +85,15 @@ handleLogin(data)  {
         render={props => (
           <MapContainer {...props}  loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
         )} />
-        <Route exact path={`/event/show/`} 
-        render={props => (
-          <EventPageContainer {...props}  loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
-        )} />
+        <Route exact path={`/event/:EventId`} 
+        render={(props) => {
+          
+          const EventId = props.match.params.EventId
+          const event = this.state.allEvents.find(e => e.id === parseInt(EventId))
+         
+          return event ?  <EventShowPage {...props} event = {event} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>
+          : "Loading..." 
+        }} />
       </Switch>
       </div>
      </BrowserRouter>

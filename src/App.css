@@ -72,10 +72,11 @@
   /* HOME PAGE */
   
   .HomePage {
+   
     padding: 0px 20px;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%   ;
-    grid-template-rows: 25% 25% 25% 25% ;
+    grid-template-columns:  20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20% ;
   }
 /*   
   .home-pic {
@@ -87,26 +88,14 @@
   } */
   .welcome-message {
     
-    grid-column-start: 1;
-   padding-left: 10px;
-   padding-right: 10px
+    grid-column-start:2;
+    grid-column-end: 5;
+    grid-row-start:2 ;
   }
-  .welcome-message2 {
-    text-align: center;
-    grid-column-start: 2;
-   
-  }
-  .welcome-message3 {
-    text-align: center;
-    grid-column-start: 3;
  
-  }
-  .welcome-message4 {
-    text-align: center;
-    grid-column-start: 4;
- 
-  }
+  
   .home-p {
+   
     grid-column-start: 4;
     grid-column-end: 4;
   
