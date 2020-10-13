@@ -71,7 +71,8 @@ componentDidMount() {
     
       <BrowserRouter>
       <div className="app">
-        <NavBar loggedInStatus={this.state.loggedInStatus}/>
+        <NavBar  user ={this.state.user} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>
+
       <Switch>
         <Route exact path={"/"} 
         render={props => (

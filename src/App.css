@@ -54,7 +54,14 @@
     
     
   }
-  
+.nav-item-ml-auto {
+  margin-left:1500px;
+}
+
+.nav-item-logout {
+  margin-left: 1050px;
+}
+
 .logo {
     z-index: 1;
     height: 80px;
@@ -84,26 +91,31 @@
     grid-template-columns:  20% 20% 20% 20% 20%;
     grid-template-rows: 20% 20% 20% 20% 20% ;
   }
-/*   
-  .home-pic {
+   
+   .home-pic {
+     margin-top: 30px;
   width: 500px;
-    grid-column-start: 5;
-  
-    
-    grid-row-start: 1;
-  } */
+    grid-column-start: 4;
+   }
+   .logo-home {
+     width: 100px;
+     margin-left: 50px;
+   }
+     
+ 
   .welcome-message {
-    
+    color:#60615f;
     grid-column-start:2;
-    grid-column-end: 5;
+    grid-column-end:4;
+ 
     grid-row-start:2 ;
   }
  
   
   .home-p {
    
-    grid-column-start: 4;
-    grid-column-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
   
     font-size: 14px;
     font-weight: 100;
@@ -114,8 +126,8 @@
   .join-button {
     grid-column-start: 2;
     grid-column-end: 3;
-    grid-row-start:7;
-  
+    grid-row-start:3;
+  height: 75px;
   
  
     font-size: 20px
@@ -378,9 +390,12 @@ margin-bottom: 10px;
 }
 
 .event-image {
+  z-index: 5;
   width: 500px;
   box-shadow: 0 10px 12px rgba(0,0,0,0.25), 
             0 5px 5px rgba(0,0,0,0.22);
+  
+  margin-left: -50px;
 }
 .event-button {
   border-radius: 20px;
@@ -408,11 +423,14 @@ margin: 0;
 .sidebar {
   float: left;
   width: 19.1489%;
+  background:white;
+  
 }
 
 .content {
   float: right;
   width: 79.7872%;
+  background:#faf7f8
 }
 
 /* make a grid */
@@ -425,7 +443,7 @@ margin: 0;
 }
 
 .wrapper > * {
-  background-color:#faf7f8;
+  /* background-color:#faf7f8; */
   color: black;
   
   padding: 20px;
@@ -442,10 +460,14 @@ margin: 0;
   margin-bottom: 10px;
   
 }
+.footer {
+  background:#faf7f8
+}
 .header {
   background:#f2edef;
 }
 .user-attending {
+  background:#faf7f8;
 grid-column: 1 / -1;
 display: grid;
 grid-gap: 10px;

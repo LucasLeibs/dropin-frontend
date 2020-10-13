@@ -44,6 +44,7 @@ class EventShowPage extends React.Component {
       <img className="event-image" src={image} alt="event pic"></img>
   </aside>
   <article className="content">
+      <br></br>
     <h3>Details</h3>
     <p className="event-p">Captain: {person}<br></br>Players going:  50</p>
     <h6 className="event-p"></h6>
