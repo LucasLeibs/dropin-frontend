@@ -22,29 +22,39 @@ class App extends React.Component {
  this.handleLogout = this.handleLogout.bind(this);
 }
 
+checkLoginStatus() {
+axios.get("http://localhost:3000/logged_in", { withCredentials: true })
+.then(response => {
+  console.log("lucas is a fuck",response)
+  if (response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
+    this.setState({
+      loggedInStatus: "LOGGED_IN", 
+      user: response.data.user
+    })
+  } else if(!response.data.logged_in && this.state.loggedInStatus === "LOGGED_IN") {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN", 
+      user: {}
+    })
+  }
+  
+}).catch(error => {
+  console.log("check login error", error)
+})
+}
 // checkLoginStatus() {
+  
 // axios.get("http://localhost:3000/logged_in", { withCredentials: true })
-// .then(response => {
-//   if (response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
+// .then(response => { 
 //     this.setState({
 //       loggedInstatus: "LOGGED_IN", 
 //       user: this.state.user
 //     })
-//   } else if(!response.data.logged_in & this.state.loggedInStatus === "LOGGED_IN") {
-//     this.setState({
-//       loggedInstatus: "NOT_LOGGED_IN", 
-//       user: {}
-//     })
-//   }
-//   console.log("logged in?", response)
-// }).catch(error => {
-//   console.log("check login error", error)
-// })
+//     console.log("logged_in?", response)
+//   })
 // }
 
-// componentDidMount() {
-//   this.checkLoginStatus();
-// }
+
 
 handleLogout() {
   this.setState({
@@ -53,13 +63,16 @@ handleLogout() {
   })
 }
 handleLogin(data)  {
+  // debugger;
   this.setState({
     loggedInStatus: "LOGGED_IN",
-    user: data
+    user: data.user
   })
 }
 
+
 componentDidMount() {
+  this.checkLoginStatus();
   axios.get('http://localhost:3000/events',{withCredentials: true})
   .then(response => {this.setState({allEvents: response.data})
 })
@@ -67,6 +80,7 @@ componentDidMount() {
   
  
   render() {
+    console.log("MOM",this.state.loggedInStatus)
   return (
     
       <BrowserRouter>

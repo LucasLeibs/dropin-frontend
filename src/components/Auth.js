@@ -21,7 +21,7 @@ class Auth extends React.Component {
     }
 
     handleSignupSubmit=(e) => {
-        
+      e.preventDefault()
       axios.post("http://localhost:3000/registrations", {
         first_name: this.state.first_name,
         last_name: this.state.last_name,
@@ -33,13 +33,14 @@ class Auth extends React.Component {
       )
       .then(response => {
           if (response.data.status === 'created') {
-           
-         this.props.handleSuccessfulSignup(response.data);
+            
+          this.props.handleSuccessfulSignup(response.data)
           }
-      })
+          }
+      )
       .catch(error => {console.log("registration error", error)
     })
-    e.preventDefault()
+    
     }
 
     handleLoginSubmit=(e) => {
@@ -105,7 +106,7 @@ class Auth extends React.Component {
 			<input type="password" name="password_confirmation" placeholder="Password Confirmation" value={this.state.password_confirmation} onChange={this.handleSignupChange} required />
       {/* <input type="text" placeholder="Bio" />
       <input type="file" placeholder="Profile Pic" /> */}
-      
+     
 			<button type="submit">Sign Up</button>
 		</form>
 	</div>
