@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-
+import {Link} from 'react-router-dom'
 class Profile extends React.Component {
 state = {
     profile: [],
@@ -77,7 +77,8 @@ state = {
         <h5>{event.name}{X}</h5>
        <p className="paragraph"> {clock}{event.time}<br></br>
         {calendar}{event.date}<br></br>
-        {pin}<a href={`https://maps.google.com/?q=${event.address}, ${event.city}, ${event.state}`}>Directions</a></p>
+        <Link to={`/event/${event.id}`}>Details</Link > 
+        </p>
 
         </div>
   

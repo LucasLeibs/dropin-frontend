@@ -28,10 +28,10 @@ export default class EventCard extends PureComponent {
         </div>
         <img width={240} src={info.image} />
         <div>
-        <button >
-           
+        
+    
            <Link to={`/event/${info.id}`}>Details</Link > 
-       </button>
+      
        </div>
       </div>
       
