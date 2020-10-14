@@ -115,6 +115,9 @@ componentDidMount() {
           : "Loading..." 
         }} />
       </Switch>
+      <footer className="main-footer">
+hello
+</footer>
       </div>
      </BrowserRouter>
  
