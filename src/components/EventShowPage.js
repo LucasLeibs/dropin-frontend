@@ -54,7 +54,7 @@ class EventShowPage extends React.Component {
   <article className="content">
       <br></br>
     <h3>Details</h3>
-    <p className="event-p">Captain: {person}<br></br>Players going:  50</p>
+    <p className="event-p">Captain: {person}<br></br>{pin}<a href={`https://maps.google.com/?q=${address}, ${city}, ${state}`}>Directions</a></p>
     <h6 className="event-p"></h6>
     <p className="event-p">{details}</p>
   </article>

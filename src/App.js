@@ -81,7 +81,7 @@ componentDidMount() {
   
  
   render() {
-    console.log("MOM",this.state.loggedInStatus)
+    console.log("USER",this.state.user)
   return (
     
       <BrowserRouter>
