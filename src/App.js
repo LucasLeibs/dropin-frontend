@@ -9,6 +9,7 @@ import AuthContainer from './containers/AuthContainer'
 import axios from 'axios'
 import NavBar from './components/NavBar'
 import EventShowPage from './components/EventShowPage'
+import Profile from './components/Profile'
 
 class App extends React.Component {
   constructor() {
@@ -99,6 +100,10 @@ componentDidMount() {
         <Route exact path={"/events"} 
         render={props => (
           <MapContainer {...props} user ={this.state.user} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
+        )} />
+        <Route exact path={"/profile"} 
+        render={props => (
+          <Profile {...props} user ={this.state.user} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
         )} />
         <Route exact path={`/event/:EventId`} 
         render={(props) => {

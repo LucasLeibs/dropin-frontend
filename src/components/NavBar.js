@@ -37,7 +37,7 @@ console.log(this.props)
       <NavLink to="#" className="nav-tab-create"> Create Event </NavLink> 
       </li>
       <li className="nav-item">
-      <NavLink to="#" className="nav-tab-profile"> Dashboard </NavLink> 
+      <NavLink to="/profile" className="nav-tab-profile"> Profile </NavLink> 
       </li>
       <li className="nav-item-logout">
       <NavLink onClick={() => this.handleLogoutClick()} to="/auth" className="nav-tab-events">Logout {arrow} </NavLink> 

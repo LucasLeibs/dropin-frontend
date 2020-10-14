@@ -8,7 +8,7 @@ class EventShowPage extends React.Component {
     joinEvent= (e) => {
        
         axios.post('http://localhost:3000/attendings',{
-            user_id: this.props.user.user.id,
+            user_id: this.props.user.id,
             event_id: this.props.event.id
         },
         {withCredentials: true}
@@ -60,9 +60,12 @@ class EventShowPage extends React.Component {
   </article>
   <footer className="footer"><h3>Who's Going?</h3>
   <h6> Players attending:( {attending_users.length} )</h6>
+  <div id="user-attending">
+  <UserCard attending_users = {attending_users} />
+  </div>
   </footer>
-  <div className="user-attending">
-    <UserCard attending_users = {attending_users} />
+  <div className="footer">
+    
   </div>
 </div>
                {/* Name: {name}

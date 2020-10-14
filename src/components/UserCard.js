@@ -3,7 +3,7 @@ import React from 'react';
 class UserCard extends React.Component {
     render() {
         return (
-            <div>
+            <div className="box">
             {this.props.attending_users.map(user => (
                 <div className="card">
                     

@@ -466,12 +466,8 @@ margin: 0;
 .header {
   background:#f2edef;
 }
-.user-attending {
-  background:#faf7f8;
-grid-column: 1 / -1;
-display: grid;
-grid-gap: 10px;
-grid-template-columns: repeat(4, 100px);
+#user-attending {
+  
 }
 .bi {
   margin-right:10px;
@@ -495,7 +491,15 @@ cursor: pointer
   align-items: center;
   height: 150px;
 }
+.box {
+  background:#faf7f8;
 
+width: 600px;
+display: grid;
+grid-gap: 10px;
+grid-template-columns: repeat(6, 100px);
+ 
+}
 /* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
 @supports (display: grid) {
   .wrapper > * {
