@@ -4,7 +4,9 @@ import {Link} from 'react-router-dom'
 class Profile extends React.Component {
 state = {
     profile: [],
-    attending_events: []
+    attending_events: [],
+    attendings: []
+
 }
     componentDidMount() {
         axios.get('http://localhost:3000/users', {withCredentials: true})
@@ -12,14 +14,26 @@ state = {
             let user = response.data.filter(data => data.id === this.props.user.id)
             this.setState({
                 profile: user[0],
-                attending_events: user[0].attending_events
+                attending_events: user[0].attending_events,
+                attendings: user[0].attendings
             })
         })
     }
 
+    deleteEvent=(id) => {
+        fetch(`http://localhost:3000/attendings/${id}`, {
+            method: "DELETE"
+        }).then(this.setState({
+            attendings: this.state.attendings
+        }));
+     window.location.href="/profile"
+    }
+        
+       
+       
     
     render () {
-        console.log(this.state.attending_events)
+       console.log("word",this.state.attendings)
         const {first_name, last_name, attendings, image, bio, attending_events, events, id} = this.state.profile
 
         const clock = <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +49,7 @@ state = {
       <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
       <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
     </svg>
-    const star = <svg onClick={()=> this.saveEvent()} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    const star = <svg onClick={()=> this.saveEvent()} iheight="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
   </svg>
     const pin = <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -71,20 +85,23 @@ state = {
 </aside>
 <article className="content">
 <h3>Owned Events</h3>
-{this.state.attending_events.map(event => (
-    
-        <div className="profile-event-card-body">
-        <h5>{event.name}{X}</h5>
-       <p className="paragraph"> {clock}{event.time}<br></br>
-        {calendar}{event.date}<br></br>
-        <Link to={`/event/${event.id}`}>Details</Link > 
-        </p>
 
-        </div>
-  
-))}
 <h3>Saved Events</h3>
+<h3>Attending Events</h3>
+{this.state.attendings.map(attending => (
+    
+    <div className="profile-event-card-body">
+    <h5>{attending.event.name} <svg onClick={() => this.deleteEvent(attending.id)} id={attending.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+  </svg></h5>
+   <p className="paragraph"> {clock}{attending.event.time}<br></br>
+    {calendar}{attending.event.date}<br></br>
+    <Link to={`/event/${attending.event.id}`}>Details</Link > 
+    </p>
 
+    </div>
+
+))}
 </article>
 <footer className="footer">
 

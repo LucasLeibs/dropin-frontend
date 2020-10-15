@@ -34,7 +34,7 @@ console.log(this.props)
       </li>
       
       <li className="nav-item">
-      <NavLink to="#" className="nav-tab-create"> Create Event </NavLink> 
+      <NavLink to="/create/new/event" className="nav-tab-create"> Create Event </NavLink> 
       </li>
       <li className="nav-item">
       <NavLink to="/profile" className="nav-tab-profile"> Profile </NavLink> 

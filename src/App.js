@@ -10,7 +10,7 @@ import axios from 'axios'
 import NavBar from './components/NavBar'
 import EventShowPage from './components/EventShowPage'
 import Profile from './components/Profile'
-
+import CreateEvent from './components/CreateEvent'
 class App extends React.Component {
   constructor() {
     super();
@@ -105,6 +105,10 @@ componentDidMount() {
         render={props => (
           <Profile {...props} user ={this.state.user} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
         )} />
+        <Route exact path={"/create/new/event"} 
+        render={props => (
+          <CreateEvent {...props} user ={this.state.user} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout} />
+        )} />
         <Route exact path={`/event/:EventId`} 
         render={(props) => {
           
@@ -116,7 +120,7 @@ componentDidMount() {
         }} />
       </Switch>
       <footer className="main-footer">
-hello
+
 </footer>
       </div>
      </BrowserRouter>

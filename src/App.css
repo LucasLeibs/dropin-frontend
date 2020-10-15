@@ -512,9 +512,9 @@ grid-template-columns: repeat(6, 100px);
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 50px;
+  height: 75px;
   width: 100%;
-  background-color: rgb(24, 19, 107);
+  background-color: #0c096b;
   color: white;
   text-align: center;
   margin-top: 50px;
@@ -551,3 +551,33 @@ grid-template-columns: repeat(6, 100px);
     color: red;
     cursor:pointer
   }
+
+  /* CREATE EVENT FORM */
+
+.create-event-form {
+  margin-top: 100px;
+  margin-left: 500px;
+  margin-right: 500px;
+}
+
+.input-field {
+background-color: #f2edef;
+}
+
+.create-event-button {
+  border-radius: 20px;
+  border: 1px solid #ff4b2b;
+  background:  #ff4b2b;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 840px;
+  letter-spacing: 1px;
+  transition: transform 80ms ease-in;
+  margin: 0 auto;
+  
+}
+
+.event-label {
+  font-weight: bold;
+}

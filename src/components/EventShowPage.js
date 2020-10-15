@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom';
 import UserCard from './UserCard'
 import axios from 'axios';
 class EventShowPage extends React.Component {
-    
+    state= {
+      joined: false
+    }
 
     joinEvent= (e) => {
        
@@ -12,7 +14,11 @@ class EventShowPage extends React.Component {
             event_id: this.props.event.id
         },
         {withCredentials: true}
-        ).then(response => console.log("response", response))
+        ).then(response => {
+          this.setState({
+            joined:true
+          })
+        })
       
     }
 
@@ -44,7 +50,9 @@ class EventShowPage extends React.Component {
         return (
             <div className="show-page">
                 <div className="wrapper">
-  <header className="header"><h1 className="event-h1">{name}<button className="event-button" onClick={()=> this.joinEvent()}>Join Event</button>{star}</h1>
+        <header className="header"><h1 className="event-h1">{name}
+        {this.state.joined === true ? <button className="event-button" onClick={()=> this.joinEvent()}>Joined</button> : <button className="event-button" onClick={()=> this.joinEvent()}>Join Event</button> }
+        {star}</h1>
   <h6 className="event-p">{calendar}  {date}<br></br>{clock} {time}<br></br>{pin}{address}, {city}, {state},{zipcode}</h6>
   <p className="event-captain">{person} {user.first_name} </p>
   </header>
