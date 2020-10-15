@@ -23,8 +23,9 @@ handleSubmit= (e) => {
     e.preventDefault()
     console.log(e)
     axios.post("http://localhost:3000/events", { 
-        name: this.state.name, 
         user_id: this.props.user.id, 
+        name: this.state.name, 
+        details: this.state.details,
         address: this.state.address,
         city: this.state.city,
         state: this.state.state,

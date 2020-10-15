@@ -509,7 +509,7 @@ grid-template-columns: repeat(6, 100px);
     margin: 0;
   }
 }
-.main-footer {
+/* .main-footer {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -519,7 +519,7 @@ grid-template-columns: repeat(6, 100px);
   color: white;
   text-align: center;
   margin-top: 50px;
-}
+} */
 
 /* PROFILE PAGE */
 
