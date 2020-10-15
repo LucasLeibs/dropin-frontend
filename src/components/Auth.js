@@ -93,11 +93,7 @@ class Auth extends React.Component {
 	<div className="form-container sign-up-container">
 		<form onSubmit={this.handleSignupSubmit} action="#">
 			<h1>Create Account</h1>
-			<div className="social-container">
-				<a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-				<a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-				<a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
-			</div>
+			
 			{/* <span>or use your email for registration</span> */}
 			<input type="text" name="first_name"placeholder="First Name" value={this.state.first_name} onChange={this.handleSignupChange} required/>
 			<input type="text" name="last_name"placeholder="Last Name" value={this.state.last_name} onChange={this.handleSignupChange} required/>

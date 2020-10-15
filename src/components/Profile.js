@@ -5,7 +5,8 @@ class Profile extends React.Component {
 state = {
     profile: [],
     attending_events: [],
-    attendings: []
+    attendings: [],
+    events: []
 
 }
     componentDidMount() {
@@ -15,7 +16,8 @@ state = {
             this.setState({
                 profile: user[0],
                 attending_events: user[0].attending_events,
-                attendings: user[0].attendings
+                attendings: user[0].attendings,
+                events: user[0].events
             })
         })
     }
@@ -28,12 +30,21 @@ state = {
         }));
      window.location.href="/profile"
     }
-        
+    
+    deleteOwnedEvent=(id) => {
+        fetch(`http://localhost:3000/events/${id}`, {
+            method: "DELETE"
+        }).then(this.setState({
+            events: this.state.events
+        }));
+     window.location.href="/profile"
+    }
+    
        
        
     
     render () {
-       console.log("word",this.state.attendings)
+       console.log("word",this.state.profile)
         const {first_name, last_name, attendings, image, bio, attending_events, events, id} = this.state.profile
 
         const clock = <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +96,20 @@ state = {
 </aside>
 <article className="content">
 <h3>Owned Events</h3>
+{this.state.events.map(event => (
+    
+    <div className="profile-event-card-body">
+    <h5>{event.name} <svg onClick={() => this.deleteOwnedEvent(event.id)} id={event.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+  </svg></h5>
+   <p className="paragraph"> {clock}{event.time}<br></br>
+    {calendar}{event.date}<br></br>
+    <Link to={`/event/${event.id}`}>Details</Link > 
+    </p>
 
+    </div>
+
+))}
 <h3>Saved Events</h3>
 <h3>Attending Events</h3>
 {this.state.attendings.map(attending => (

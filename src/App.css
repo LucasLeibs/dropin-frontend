@@ -199,9 +199,10 @@ height: 500px;
     
 
 }
-h1 { 
+h1{ 
   font-weight: bold;
   margin: 0;
+
 }
 
 p { 
@@ -555,7 +556,7 @@ grid-template-columns: repeat(6, 100px);
   /* CREATE EVENT FORM */
 
 .create-event-form {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-left: 500px;
   margin-right: 500px;
 }
@@ -574,7 +575,8 @@ background-color: #f2edef;
   width: 840px;
   letter-spacing: 1px;
   transition: transform 80ms ease-in;
-  margin: 0 auto;
+  margin-top : 10px;
+
   
 }
 
