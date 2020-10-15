@@ -143,7 +143,10 @@ handleEventChange=(e) => {
               I'm all ready!
             </Label>
           </FormGroup>
-      <Button className="create-event-button" type="submit">Submit</Button>
+          <Row form>
+          <Button className="create-event-button" type="submit">Submit</Button>
+          </Row>
+      {/* <Button className="create-event-button" type="submit">Submit</Button> */}
 
    
   </Form>
