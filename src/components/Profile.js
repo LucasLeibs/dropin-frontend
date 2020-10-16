@@ -1,14 +1,17 @@
 import React from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+
 class Profile extends React.Component {
-state = {
+    state= {
     profile: [],
     attending_events: [],
     attendings: [],
-    events: []
+    events: [], 
+    uploadedImage:''
 
 }
+ 
     componentDidMount() {
         axios.get('http://localhost:3000/users', {withCredentials: true})
         .then(response => {
@@ -40,11 +43,11 @@ state = {
      window.location.href="/profile"
     }
     
-       
-       
+    
     
     render () {
-       console.log("word",this.state.profile)
+        
+       console.log("word",this.state.attending_events)
         const {first_name, last_name, attendings, image, bio, attending_events, events, id} = this.state.profile
 
         const clock = <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -78,15 +81,19 @@ state = {
 
 </header>
 <aside className="sidebar">
-<div class="input-group">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"></input>
-    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-  </div>
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
-  </div>
-</div>
+    <img src=''></img>
+    <form  onSubmit={this.submitPhoto}>
+  <input type="file"
+    id="profile-photo-input" name="profile_picture"
+    accept="image/png, image/jpeg"
+  />
+  <input
+    className="submit-input"
+    type="submit"
+    value="Upload"
+  />
+</form>
+
 <div class="input-group">
   <div class="input-group-prepend">
     <span  class="input-group-text">Bio</span>

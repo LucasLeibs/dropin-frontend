@@ -463,12 +463,16 @@ margin: 0;
   
 }
 .footer {
-  background:#faf7f8
+  background:#faf7f8;
+  align-content: center;
+  align-items: center;
 }
 .header {
   background:#f2edef;
 }
 #user-attending {
+  margin-top : 50px;
+  margin-left: 140px;
   
 }
 .bi {
@@ -489,11 +493,18 @@ cursor: pointer
   color:black;
   border-radius: 5px;
   padding: 20px;
-  font-size: 12px;
+  font-size: 14px;
   align-items: center;
   height: 150px;
+  
+}
+.avatar {
+  padding-bottom: 10px;
+  color: white;
+  font-weight: bold;
 }
 .box {
+
   background:#faf7f8;
 
 width: 600px;

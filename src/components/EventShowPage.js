@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import UserCard from './UserCard'
 import axios from 'axios';
+import UserAvatar from 'react-user-avatar'
+
 class EventShowPage extends React.Component {
     state= {
       joined: false
@@ -66,8 +68,8 @@ class EventShowPage extends React.Component {
     <h6 className="event-p"></h6>
     <p className="event-p">{details}</p>
   </article>
-  <footer className="footer"><h3>Who's Going?</h3>
-  <h6> Players attending:( {attending_users.length} )</h6>
+  <footer className="footer">
+  <h4> Players attending:( {attending_users.length} )</h4>
   <div id="user-attending">
   <UserCard attending_users = {attending_users} />
   </div>
