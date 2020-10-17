@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import UserAvatar from 'react-user-avatar'
 
 class Profile extends React.Component {
     state= {
@@ -8,10 +10,20 @@ class Profile extends React.Component {
     attending_events: [],
     attendings: [],
     events: [], 
-    uploadedImage:''
-
+    uploadedfile: null,
+    file_url: "", 
+    isOwnerOpen: false,
+    isAttendingOpen: false
 }
- 
+ ownerToggle= () => {
+this.setState({ isOwnerOpen: !this.state.isOwnerOpen})
+ }
+
+ attendingToggle=() => {
+   this.setState({
+     isAttendingOpen: !this.state.isAttendingOpen
+   })
+ }
     componentDidMount() {
         axios.get('http://localhost:3000/users', {withCredentials: true})
         .then(response => {
@@ -42,8 +54,35 @@ class Profile extends React.Component {
         }));
      window.location.href="/profile"
     }
+    // submitPhoto=(e) => {
+    //   e.preventDefault()
+    //   console.log(this.state.uploadedfile)
+    //   console.log(this.props.user.id)
+    //   const formData = new FormData();
+    // formData.append("file", this.state.uploadedfile);
+    // formData.append("user_id", this.props.user.id);
+    // fetch('http://localhost:3000/uploadfile', {
+    //   method: 'POST', 
+    //   body: formData
+    // }).then(response => response.json())
+    // .then(data => {
+    //   this.setState({
+    //     file_url: data.path
+    //   })
+    // }
+    //   )
+    // }
+
+
+    // handlePhotoChange=(e) => {
+      
+    //   if(e.target.files[0]) {
+    //     this.setState({
+    //       uploadedfile: e.target.files[0]
+    //     })
+    //   }
     
-    
+    // }
     
     render () {
         
@@ -81,11 +120,19 @@ class Profile extends React.Component {
 
 </header>
 <aside className="sidebar">
-    <img src=''></img>
-    <form  onSubmit={this.submitPhoto}>
-  <input type="file"
-    id="profile-photo-input" name="profile_picture"
-    accept="image/png, image/jpeg"
+
+                    <div className="avatar">   
+                    <UserAvatar className="avatar-profile" size="100" name={`${first_name} ${last_name}`} />
+                   </div>
+                  
+        
+    {/* <img src={`http://localhost:3000${this.state.file_url}`}></img>
+    <form enctype="multipart/form-data"
+              method="post"
+  onSubmit={this.submitPhoto}>
+  <input onChange={this.handlePhotoChange} type="file"
+    id="profile-photo-input" name="file"
+    accept="image/png, image/jpeg" 
   />
   <input
     className="submit-input"
@@ -99,12 +146,28 @@ class Profile extends React.Component {
     <span  class="input-group-text">Bio</span>
   </div>
   <textarea class="form-control" aria-label="With textarea"></textarea>
-</div>
+</div> */}
 </aside>
 <article className="content">
-<h3>Owned Events</h3>
-{this.state.events.map(event => (
-    
+  <div className="owned-events">
+
+<Button className="profile-button" onClick={this.ownerToggle} style={{ marginBottom: '1rem' }}>Owned Events</Button>
+      <Collapse isOpen={this.state.isOwnerOpen}>
+          {this.state.events.map(event => (
+    <div className="owner-card-body">
+    <h5>{event.name} <svg onClick={() => this.deleteOwnedEvent(event.id)} id={event.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+  </svg></h5>
+   <p className="paragraph"> {clock}{event.time}<br></br>
+    {calendar}{event.date}<br></br>
+    <Link to={`/event/${event.id}`}>Details</Link > 
+    </p>
+    </div>
+))} 
+
+  
+      </Collapse>
+{/* {this.state.events.map(event => (
     <div className="profile-event-card-body">
     <h5>{event.name} <svg onClick={() => this.deleteOwnedEvent(event.id)} id={event.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -116,12 +179,14 @@ class Profile extends React.Component {
 
     </div>
 
-))}
-<h3>Saved Events</h3>
-<h3>Attending Events</h3>
+))} */}
+</div>
+
+<Button className="profile-button" onClick={this.attendingToggle} style={{ marginBottom: '1rem' }}>Attending Events</Button>
+<Collapse isOpen={this.state.isAttendingOpen}>
 {this.state.attendings.map(attending => (
     
-    <div className="profile-event-card-body">
+    <div className="owner-card-body">
     <h5>{attending.event.name} <svg onClick={() => this.deleteEvent(attending.id)} id={attending.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
   </svg></h5>
@@ -133,6 +198,7 @@ class Profile extends React.Component {
     </div>
 
 ))}
+</Collapse>
 </article>
 <footer className="footer">
 

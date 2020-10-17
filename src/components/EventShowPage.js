@@ -3,31 +3,76 @@ import {Link} from 'react-router-dom';
 import UserCard from './UserCard'
 import axios from 'axios';
 import UserAvatar from 'react-user-avatar'
+import { Alert } from 'reactstrap';
 
 class EventShowPage extends React.Component {
     state= {
-      joined: false
+      joined: false,
+      attending_events: [],
+      profile: [],
+      attendingIds: [],
+      visible: false
     }
 
     joinEvent= (e) => {
-       
+      // let ids = attending_events.map(event => event.id)
+      // if(ids.includes(this.props.event.id))
+      if(this.state.joined === false) {
         axios.post('http://localhost:3000/attendings',{
             user_id: this.props.user.id,
             event_id: this.props.event.id
         },
         {withCredentials: true}
         ).then(response => {
-          this.setState({
-            joined:true
-          })
+          window.location.href=`/event/${this.props.event.id}`
+          // if(attendingIds.includes(response.data.event.id)) {
+          //   this.setState({
+          //     joined: true            
+          //   })
+          // }
+          
+          console.log(this.state.joined)
+        
         })
-      
+      } else {
+        this.setState({
+          visible: true
+        })
+      }
     }
 
+   
     saveEvent= (e) => {
         
     }
+
+    onDismiss = () => {
+      this.setState({
+        visible: false
+      })
+    }
+
+    componentDidMount() {
+    axios.get('http://localhost:3000/users', {withCredentials: true})
+        .then(response => {
+            let user = response.data.filter(data => data.id === this.props.user.id)
+            let ids = user[0].attending_events.map(event => event.id)
+            if(ids.includes(this.props.event.id)) {
+              this.setState({
+                attending_events: user[0].attending_events,
+                joined: true
+              })
+            } else {
+              this.setState({
+                joined: false,
+                attending_events: user[0].attending_events
+              })
+            }
+    
+        })
+    }
     render () {
+      console.log(this.state.joined)
         const {name, date, time, details, image, sport, address, city, state, zipcode, user, attending_users} = this.props.event
         const clock = <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
@@ -48,13 +93,20 @@ class EventShowPage extends React.Component {
     const pin = <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
   </svg>
-        console.log("supp", this.props.user.id)
+  const check = <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
+</svg>
+        
         return (
             <div className="show-page">
                 <div className="wrapper">
         <header className="header"><h1 className="event-h1">{name}
-        {this.state.joined === true ? <button className="event-button" onClick={()=> this.joinEvent()}>Joined</button> : <button className="event-button" onClick={()=> this.joinEvent()}>Join Event</button> }
+        {this.state.joined === true ? <button className="event-button" onClick={()=> this.joinEvent()}>Joined {check} </button> : <button className="event-button" onClick={()=> this.joinEvent()}>Join Event</button> }
         {star}</h1>
+        <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
+      You are already attending this event!
+    </Alert>
   <h6 className="event-p">{calendar}  {date}<br></br>{clock} {time}<br></br>{pin}{address}, {city}, {state},{zipcode}</h6>
   <p className="event-captain">{person} {user.first_name} </p>
   </header>
@@ -63,10 +115,12 @@ class EventShowPage extends React.Component {
   </aside>
   <article className="content">
       <br></br>
-    <h3>Details</h3>
-    <p className="event-p"><br></br>{pin}<a href={`https://maps.google.com/?q=${address}, ${city}, ${state}`}>Directions</a></p>
+      <div className="details">
+    <h3 className="details-header">Details</h3>
+    <h6>{pin}<a href={`https://maps.google.com/?q=${address}, ${city}, ${state}`}>Directions</a></h6>
     <h6 className="event-p"></h6>
     <p className="event-p">{details}</p>
+    </div>
   </article>
   <footer className="footer">
   <h4> Players attending:( {attending_users.length} )</h4>

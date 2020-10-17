@@ -391,6 +391,7 @@ margin-bottom: 10px;
 }
 
 .event-image {
+  margin-top: 10px;
   z-index: 5;
   width: 500px;
   box-shadow: 0 10px 12px rgba(0,0,0,0.25), 
@@ -410,6 +411,9 @@ margin-bottom: 10px;
   transition: transform 80ms ease-in;
   float:right 
 }
+
+  
+
 .event-button:hover {
 background-color:#d1082d;
 }
@@ -422,6 +426,7 @@ margin: 0;
 }
 /* no grid support? */
 .sidebar {
+ 
   float: left;
   width: 19.1489%;
   background:#faf7f8;
@@ -431,7 +436,8 @@ margin: 0;
 .content {
   float: right;
   width: 79.7872%;
-  background:#faf7f8
+  background:#faf7f8;
+  padding: 0px;
 }
 
 /* make a grid */
@@ -454,7 +460,17 @@ margin: 0;
   margin-bottom: 10px;
   
 }
-
+.details {
+  background:white;
+  padding: 20px;
+  border: 1px solid #f2edef
+}
+.details-header {
+  background:#faf7f8;
+  padding: 20px;
+  border: 2px solid #f2edef;
+  margin-bottom: 20px;
+}
 .header, .footer {
   grid-column: 1 / -1;
   /* needed for the floated layout */
@@ -472,7 +488,7 @@ margin: 0;
 }
 #user-attending {
   margin-top : 50px;
-  margin-left: 140px;
+  margin-left: 130px;
   
 }
 .bi {
@@ -533,16 +549,43 @@ grid-template-columns: repeat(6, 100px);
 } */
 
 /* PROFILE PAGE */
+.owned-events {
+  /* background:white;
+  padding: 10px;
+  border: 2px solid #f2edef */
+}
 
+.owned-events-card {
+  background: #f2edef;
+}
+.owner-card-body {
+margin: 10px;
+background-color: white;
+padding: 10px;
+border: 2px solid #f2edef
+}
 .event-info {
   font-size: 24px;
 }
-
+.profile-button {
+  margin-left: 80px;
+  border-radius: 3px;
+  border: 1px solid #ff4b2b;
+  background:  #ff4b2b;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 500px;
+  
+  letter-spacing: 1px;
+  transition: transform 80ms ease-in;
+   
+}
 
 .profile-event-card-body {
   padding: 5px;
-  border: 1px solid #f2edef;;
-  background-color:white;
+  border: 2px solid #f2edef;
+  background-color:#faf7f8;
   margin-bottom: 5px;
 }
 

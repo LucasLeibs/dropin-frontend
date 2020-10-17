@@ -11,7 +11,7 @@ class UserCard extends React.Component {
             
                 <div className="card">
                     <div className="avatar">   
-                    <UserAvatar size="48" name={`${user.first_name} ${user.last_name}`} colors={['#d41e1e', '#1e2963', '#c5cbe8']}/>
+                    <UserAvatar size="48" name={`${user.first_name} ${user.last_name}`} />
                    </div>
                     {user.first_name}<br></br>
                     {user.last_name}
