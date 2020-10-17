@@ -515,9 +515,10 @@ cursor: pointer
   
 }
 .avatar {
-  padding-bottom: 10px;
+  
   color: white;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 .box {
 
@@ -559,23 +560,24 @@ grid-template-columns: repeat(6, 100px);
   background: #f2edef;
 }
 .owner-card-body {
-margin: 10px;
+
 background-color: white;
 padding: 10px;
-border: 2px solid #f2edef
+border: 2px solid #f2edef;
+margin-bottom: 10px
 }
 .event-info {
   font-size: 24px;
 }
 .profile-button {
-  margin-left: 80px;
+
   border-radius: 3px;
-  border: 1px solid #ff4b2b;
-  background:  #ff4b2b;
+  border: 1px solid #9b8d8b;
+  background:  #302d2c;
   color: white;
   font-size: 12px;
   font-weight: bold;
-  width: 500px;
+  width: 750px;
   
   letter-spacing: 1px;
   transition: transform 80ms ease-in;
@@ -637,3 +639,4 @@ background-color: #f2edef;
 .event-label {
   font-weight: bold;
 }
+
