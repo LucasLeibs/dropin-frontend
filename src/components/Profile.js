@@ -10,8 +10,8 @@ class Profile extends React.Component {
     attending_events: [],
     attendings: [],
     events: [], 
-    uploadedfile: null,
-    file_url: "", 
+    // uploadedfile: null,
+    // file_url: "", 
     isOwnerOpen: true,
     isAttendingOpen: true
 }
