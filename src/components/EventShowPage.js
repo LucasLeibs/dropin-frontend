@@ -6,7 +6,7 @@ import UserAvatar from 'react-user-avatar'
 import { Alert } from 'reactstrap';
 import {Collapse} from 'reactstrap'
 import moment from 'moment'
-import Comment from './Comments.js'
+import Comments from './Comments.js'
 
 class EventShowPage extends React.Component {
     state= {
@@ -20,18 +20,16 @@ class EventShowPage extends React.Component {
     }
 
     loadComments = (id) => {
-console.log(id)
-      axios.get(`http://localhost:3000/events/${id}`, {withCredentials: true})
-      .then(response => this.setState({
-        comments: response.data.comments,
+// console.log(id)
+//       axios.get(`http://localhost:3000/events/${id}`, {withCredentials: true})
+     this.setState({
+        // comments: response.data.comments,
 
         commentsOpen: !this.state.commentsOpen
-      }))
+      })
     }
     
-    newComment= (e) => {
-      axios.post('http://localhost:3000/comments', {withCredentials: true})
-    }
+    
     joinEvent= (e) => {
       // let ids = attending_events.map(event => event.id)
       // if(ids.includes(this.props.event.id))
@@ -140,11 +138,10 @@ console.log(id)
     <h6 className="event-p"></h6>
     <p className="event-p">{details}</p>
     <div className="comments">
-    <button onClick={() => this.loadComments(this.props.event.id)}>comments</button>
+    <button onClick={() => this.loadComments(this.props.event.id)}>View Comments({this.props.event.comments.length})</button>
     <Collapse isOpen={this.state.commentsOpen}>
-   <Comment user = {this.props.user} event={this.props.event} comments ={this.state.comments}/>
-   
-   
+   <Comments user = {this.props.user} event={this.props.event} comments ={this.state.comments}/>
+
     </Collapse>
   </div>
     </div>

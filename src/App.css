@@ -588,8 +588,15 @@ grid-template-columns: repeat(6, 100px);
   font-size: 10px;
   margin:0px
 }
+.new-comment-form {
+  width: 90%;
+ 
+}
 .trash {
   float: right;
+}
+.nothing-button {
+  background-color: transparent;
 }
 /* .main-footer {
   position: fixed;
