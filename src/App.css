@@ -503,7 +503,16 @@ cursor: pointer
   color:gold;
  
 }
-
+ .bi-chat-dots {
+   margin-top: 5px;
+  margin-left: 10px;
+  padding: 0px;
+  cursor: pointer
+} 
+.bi-chat-dots:hover {
+ 
+  color: grey
+}
 .card {
   background-color:white;
   color:black;
