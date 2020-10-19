@@ -31,12 +31,12 @@ class Comments extends React.Component {
 
       }
       deleteComment= event => {
-         if (event.user.id === this.props.user.id) {
-            
-         }
           console.log(event)
-        //   if (this.props.user.id === id
-      }
+          this.props.removeComment(event)
+        
+    
+    }
+      
 
    render() {
        console.log(this.props.event)
@@ -59,17 +59,17 @@ const send =<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow
            
            <div className="comment">
            <p className="comment-name">{comment.user.first_name} {comment.user.last_name} </p>
-           <p className="comment-body">"{comment.body}"{<svg onClick={()=> this.deleteComment(comment)} id={comment.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+           <p className="comment-body">"{comment.body}"{this.props.user.id === comment.user.id ? <svg onClick={()=> this.deleteComment(comment)} id={comment.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
   <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-</svg>}</p>
+</svg> : null}</p>
            
            <p className="comment-time">{moment(comment.created_at).startOf('hour').fromNow()}</p>
            </div>
        ))}
         <form onSubmit={this.handleSubmit} class="form-inline">
   <div class="form-group mx-sm-3 mb-2">
-    <input  className="new-comment-form" type="text" name="newComment" value={this.state.newComment} class="form-control" id="inputPassword2" placeholder="New Comment" onChange={this.handleCommentChange}></input>
+    <input value={this.state.newComment} class="form-control" id="inputPassword2" placeholder="New Comment" onChange={this.handleCommentChange}></input>
   </div>
   <button type="submit" class="btn btn-primary mb-2">{send}</button>
 </form>

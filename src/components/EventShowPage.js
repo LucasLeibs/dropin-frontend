@@ -56,11 +56,13 @@ class EventShowPage extends React.Component {
         })
       }
     }
-
-   
-    saveEvent= (e) => {
-        
-    }
+    removeComment=(comment) => {
+    fetch(`http://localhost:3000/comments/${comment.id}`, {
+      method: "DELETE"
+  }).then(response => { 
+      window.location.href = `/event/${this.props.event.id}`
+  })
+}
 
     onDismiss = () => {
       this.setState({
@@ -122,13 +124,13 @@ class EventShowPage extends React.Component {
         <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
       You are already attending this event!
     </Alert>
-  <h6 className="event-p">{calendar}  {date}<br></br>{clock} {time}<br></br>{pin}{address}, {city}, {state},{zipcode}</h6>
+  <h6 className="event-p">{calendar}  {date}<br></br>{clock} {moment({time}).format('LT')}  <br></br>{pin}{address}, {city}, {state},{zipcode}</h6>
   <p className="event-captain">{person} {user.first_name} </p>
   </header>
   <aside className="sidebar">
       <img className="event-image" src={image} alt="event pic"></img>
   </aside>
-  <article className="content">
+  <article className="event-content">
       <br></br>
       <div className="details">
     <h3 className="details-header">Details</h3>
@@ -138,7 +140,7 @@ class EventShowPage extends React.Component {
     <div className="comments">
     <button  className="view-comments" onClick={() => this.loadComments(this.props.event.id)}>View Comments({this.props.event.comments.length})</button>
     <Collapse isOpen={this.state.commentsOpen}>
-   <Comments user = {this.props.user} event={this.props.event} comments ={this.state.comments}/>
+   <Comments removeComment = {this.removeComment} user = {this.props.user} event={this.props.event} comments ={this.state.comments}/>
 
     </Collapse>
   </div>
