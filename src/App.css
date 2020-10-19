@@ -560,6 +560,22 @@ grid-template-columns: repeat(6, 100px);
     overflow-y: hidden;
  
 }
+.view-comments {
+  border-radius: 20px;
+    border: 1px solid #ff4b2b;
+    background:  #ff4b2b;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 15px;
+    letter-spacing: 1px;
+    transition: transform 80ms ease-in;
+    margin-top:34px;
+    
+}
+.view-comments:hover {
+  background:#d1082d;
+}
 .comment:hover {
   background:#faf7f8
 }
@@ -585,16 +601,47 @@ grid-template-columns: repeat(6, 100px);
   overflow: hidden;
 }
 .comment-time {
-  font-size: 10px;
+  font-size: 11px;
   margin:0px
 }
 .new-comment-form {
   width: 90%;
+  font-size: 12px;
  
 }
-.trash {
-  float: right;
+.btn {
+  width: 30px;
+  height: 30px;
+  display: block;
+  
+  background: #fff;
+  border-radius: 100%;
+  border: 1px solid#2f2482;
+  color: #2f2482;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 7px #fff;
+  transition: 0.2s ease-out;
 }
+.btn:hover {
+  background: #2f2482;
+  color: #fff;
+  outline: 0;
+}
+.bi-trash {
+  float: right;
+  margin-left: 50px;
+  cursor:pointer
+}
+.bi-trash:hover {
+color: red;
+}
+.bi-arrow-right-circle {
+  margin-left: -10px;
+  margin-top: -23px;
+}
+
+
 .nothing-button {
   background-color: transparent;
 }
