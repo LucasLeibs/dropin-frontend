@@ -124,7 +124,7 @@ class EventShowPage extends React.Component {
         <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
       You are already attending this event!
     </Alert>
-  <h6 className="event-p">{calendar}  {date}<br></br>{clock} {moment({time}).format('LT')}  <br></br>{pin}{address}, {city}, {state},{zipcode}</h6>
+  <h6 className="event-p">{calendar}  {moment(date).format("MMM Do")}<br></br>{clock} {moment({time}).format('LT')}<br></br> {pin}<a href={`https://maps.google.com/?q=${address}, ${city}, ${state}`}>{address}, {city}, {state}, {zipcode}</a></h6>
   <p className="event-captain">{person} {user.first_name} </p>
   </header>
   <aside className="sidebar">
@@ -134,7 +134,7 @@ class EventShowPage extends React.Component {
       <br></br>
       <div className="details">
     <h3 className="details-header">Details</h3>
-    <h6>{pin}<a href={`https://maps.google.com/?q=${address}, ${city}, ${state}`}>Directions</a></h6>
+    
     <h6 className="event-p"></h6>
     <p className="event-p">{details}</p>
     <div className="comments">

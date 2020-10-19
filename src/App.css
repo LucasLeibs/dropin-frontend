@@ -479,6 +479,7 @@ margin: 0;
   padding: 20px;
   border: 2px solid #f2edef;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 .header, .footer {
   grid-column: 1 / -1;
@@ -511,6 +512,40 @@ cursor: pointer
 .bi-star:hover {
   color:gold;
  
+}
+.bi-geo {
+  margin-right:0
+}
+.bi-geo-alt {
+color: red;
+width: 30px;
+height: 30px;
+margin-left: 6px;
+}
+.bi-geo-alt:hover {
+  color: white;
+}
+ .pin-button {
+   background:white;
+   border: 1 px solid red;
+   width: 45px;
+   height: 45px;
+   padding: 0px;
+   margin: 0px;
+   border-radius: 25px;
+ }
+ 
+.pin-button:hover {
+  background: red;
+  color: white;
+}
+a {
+  font-size: 17px
+}
+a:hover {
+  color: green;
+  text-decoration: bold;
+  font-size: 18px;
 }
  .bi-chat-dots {
    margin-top: 5px;
@@ -562,7 +597,7 @@ grid-template-columns: repeat(6, 100px);
   font-weight: bold
 }
 .comment {
-  margin-top: 5px;
+  margin-top: 10px;
   padding: 10px;
   background: white;
   overflow-x: auto;
@@ -627,6 +662,7 @@ grid-template-columns: repeat(6, 100px);
   margin-top: 20px;
   margin-right: 0px;
   font-size: 10px;
+  
 }
 .btn {
   width: 30px;

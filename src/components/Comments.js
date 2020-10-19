@@ -69,7 +69,7 @@ const send =<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow
        ))}
         <form onSubmit={this.handleSubmit} class="form-inline">
   <div class="form-group mx-sm-3 mb-2">
-    <input value={this.state.newComment} class="form-control" id="inputPassword2" placeholder="New Comment" onChange={this.handleCommentChange}></input>
+    <input type="text" name="newComment" value={this.state.newComment} class="form-control" id="inputPassword2" placeholder="New Comment" onChange={this.handleCommentChange}></input>
   </div>
   <button type="submit" class="btn btn-primary mb-2">{send}</button>
 </form>
