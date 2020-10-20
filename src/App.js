@@ -11,13 +11,15 @@ import NavBar from './components/NavBar'
 import EventShowPage from './components/EventShowPage'
 import Profile from './components/Profile'
 import CreateEvent from './components/CreateEvent'
+import ClipLoader from "react-spinners/BeatLoader";
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
     loggedInStatus: "NOT_LOGGED_IN", 
     user: {},
-    allEvents: []
+    allEvents: [],
+    loading: true
   };
   this.handleLogin = this.handleLogin.bind(this);
  this.handleLogout = this.handleLogout.bind(this);
@@ -75,7 +77,8 @@ handleLogin(data)  {
 componentDidMount() {
   this.checkLoginStatus();
   axios.get('http://localhost:3000/events',{withCredentials: true})
-  .then(response => {this.setState({allEvents: response.data})
+  .then(response => {this.setState({allEvents: response.data,
+  loading: false})
 })
 }
   
@@ -116,9 +119,16 @@ componentDidMount() {
           const event = this.state.allEvents.find(e => e.id === parseInt(EventId))
          
           return event ?  <EventShowPage {...props} user = {this.state.user} event = {event} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>
-          : <div className="loading-div"> <h1>Loading . . .</h1><img className="loading" src={logo}></img>
+          : <div className="sweet-loading">
+          <ClipLoader className="spinner"
+           
+            size={50}
+            color={"#123abc"}
+            loading={this.state.loading}
+          />
+        </div>
          
-          </div> 
+          
         }} />
       </Switch>
       

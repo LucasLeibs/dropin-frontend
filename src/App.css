@@ -472,12 +472,14 @@ margin: 0;
 }
 /* no grid support? */
 .sidebar {
- 
+ text-align: center;
+ font-weight: bold;
   float: left;
   width: 19.1489%;
   background:#faf7f8;
-  
-  
+}
+.joined {
+  font-weight: bold;
 }
 .players-attending {
   font-weight: bold;
@@ -517,6 +519,10 @@ margin: 0;
   /* needed for the floated layout*/
   margin-bottom: 10px;
   
+}
+.hidden-alert {
+  background: white;
+  border: none;
 }
 .details {
   background:white;
@@ -613,6 +619,16 @@ a:hover {
   border-radius: 5px;
   padding: 20px;
   font-size: 14px;
+  align-items: center;
+  height: 150px;
+  
+}
+.profile-card {
+  background-color:white;
+  color:black;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 20px;
   align-items: center;
   height: 150px;
   
@@ -782,7 +798,9 @@ font-size: 12px;
   padding: 10px;
   border: 2px solid #f2edef */
 }
-
+.email {
+  margin: 10px;
+}
 .owned-events-card {
   background: #f2edef;
 }
@@ -877,12 +895,21 @@ background-color: #f2edef;
   width: 840px;
   letter-spacing: 1px;
   transition: transform 80ms ease-in;
-  margin-top : 10px;
-
-  
+  margin-top : 10px;  
 }
 
 .event-label {
   font-weight: bold;
+}
+.default-profile-pic {
+  margin-top: -60px;
+}
+
+.sweet-loading {
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
 }
 

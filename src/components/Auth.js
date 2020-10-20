@@ -1,6 +1,7 @@
 import React from "react";
 import '../App.css'
 import axios from 'axios';
+import {Alert} from 'reactstrap'
 
 
 class Auth extends React.Component {
@@ -17,7 +18,8 @@ class Auth extends React.Component {
       registrationErrors: '',
       login_email: '',
       login_password: '',
-      isActive: false
+      isActive: false,
+   
     }
 
     handleSignupSubmit=(e) => {
@@ -32,14 +34,19 @@ class Auth extends React.Component {
       { withCredentials: true } 
       )
       .then(response => {
+        console.log(response)
           if (response.data.status === 'created') {
             
           this.props.handleSuccessfulSignup(response.data)
+          } else {
+            alert(response.data.map(data => (
+              ` ${data}`
+            )))
           }
           }
       )
-      .catch(error => {console.log("registration error", error)
-    })
+    //   .catch(error => {alert(error.message)
+    // })
     
     }
 
@@ -58,10 +65,13 @@ class Auth extends React.Component {
           if (response.data.logged_in === true) {
            
          this.props.handleSuccessfulSignup(response.data);
+          } else {
+            console.log(response.data)
+        alert(response.data.message)
           }
       })
-      .catch(error => {console.log("login error", error)
-    })
+    //   .catch(error => {console.log(error)
+    // })
     e.preventDefault()
     }
     
@@ -83,12 +93,26 @@ class Auth extends React.Component {
         isActive: false
       })
     }
-
+    onDismiss=() =>  {
+      this.setState({ 
+        visible: false
+      })
+    }
   
   render() {
-   console.log(this.props)
+   console.log(this.state.errors)
     return (
       <div className= "page-container">
+    
+   
+        {/* <div>
+        {this.state.errors !== "" ? this.setState({ visible: true}) : this.setState({ visible: false})}
+     <Alert className="alert" color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
+    {this.state.errors}
+   
+   </Alert>
+   </div> */}
+      
       <div className={this.state.isActive ? "right-panel-active" : null} id="container">
 	<div className="form-container sign-up-container">
 		<form onSubmit={this.handleSignupSubmit} action="#">
