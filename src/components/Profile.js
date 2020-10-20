@@ -87,6 +87,9 @@ this.setState({ isOwnerOpen: !this.state.isOwnerOpen})
     render () {
         
        console.log("word",this.state.attending_events)
+       const {time} = this.state.events
+       const attendingEvents = this.state.attendings.map(attending => attending.event)
+       
         const {first_name, last_name, attendings, image, bio, attending_events, events, id} = this.state.profile
         const person2 = <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
@@ -155,7 +158,7 @@ this.setState({ isOwnerOpen: !this.state.isOwnerOpen})
 <article className="content">
   <div className="owned-events">
 
-<Button className="profile-button" onClick={this.ownerToggle} style={{ marginBottom: '1rem' }}>Owned Events</Button>
+<button className="profile-button" onClick={this.ownerToggle} style={{ marginBottom: '1rem' }}>Owned Events</button> 
       <Collapse isOpen={this.state.isOwnerOpen}>
           {this.state.events.map(event => (
     <div className="owner-card-body">
@@ -186,17 +189,19 @@ this.setState({ isOwnerOpen: !this.state.isOwnerOpen})
 ))} */}
 </div>
 
-<Button className="profile-button" onClick={this.attendingToggle} style={{ marginBottom: '1rem'}}>Attending Events</Button>
+<button className="profile-button" onClick={this.attendingToggle} style={{ marginBottom: '1rem'}}>Attending Events</button>
 <Collapse isOpen={this.state.isAttendingOpen}>
-{this.state.attendings.map(attending => (
-    
+{attendingEvents.map(event => (
+   
     <div className="owner-card-body"> 
-    <h5>{attending.event.name} <svg onClick={() => this.deleteEvent(attending.id)} id={attending.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+
+    <h5>{event.name} <svg onClick={() => this.deleteEvent(event.id)} id={event.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
   </svg></h5>
-   <p className="paragraph"> {clock}{attending.event.time}<br></br>
-    {calendar}{attending.event.date}<br></br>
-    <Link to={`/event/${attending.event.id}`}>Details</Link > 
+  
+   <p className="paragraph"> {clock}{moment(event.time).format('LT')}<br></br>
+    {calendar}{event.date}<br></br>
+    <Link to={`/event/${event.id}`}>Details</Link > 
     </p>
 
     </div>

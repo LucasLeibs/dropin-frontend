@@ -7,6 +7,7 @@ import { Alert } from 'reactstrap';
 import {Collapse} from 'reactstrap'
 import moment from 'moment'
 import Comments from './Comments.js'
+import pic from '../drop_in.logo.png'
 
 class EventShowPage extends React.Component {
     state= {
@@ -87,7 +88,7 @@ class EventShowPage extends React.Component {
     }
     render () {
       console.log(this.state.comments)
-        const {name, date, time, details, image, sport, address, city, state, zipcode, user, attending_users} = this.props.event
+        const {name, date, time, details, sport, address, city, state, zipcode, user, attending_users} = this.props.event
         
         const clock = <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
@@ -125,10 +126,10 @@ class EventShowPage extends React.Component {
       You are already attending this event!
     </Alert>
   <h6 className="event-p">{calendar}  {moment(date).format("MMM Do")}<br></br>{clock} {moment({time}).format('LT')}<br></br> {pin}<a href={`https://maps.google.com/?q=${address}, ${city}, ${state}`}>{address}, {city}, {state}, {zipcode}</a></h6>
-  <p className="event-captain">{person} {user.first_name} </p>
+  <p className="event-captain"> Host: {person}{user.first_name} {user.last_name} </p>
   </header>
   <aside className="sidebar">
-      <img className="event-image" src={image} alt="event pic"></img>
+    {this.props.event.image === null ? <img className="event-image-default" src="https://media.istockphoto.com/photos/various-sport-equipments-on-grass-picture-id949190756?k=6&m=949190756&s=612x612&w=0&h=dNek5l5xc68G0gCZv-fe0vHP8kjDpAYFrRnSPh8iLyc=" alt="event pic"></img> : <img className="event-image" src={this.props.event.image} alt="event pic"></img>}
   </aside>
   <article className="event-content">
       <br></br>
@@ -147,7 +148,7 @@ class EventShowPage extends React.Component {
     </div>
   </article>
   <footer className="footer">
-  <h4> Players attending:( {attending_users.length} )</h4>
+  <h4 className="players-attending"> Players attending: ( {attending_users.length} )</h4>
   <div id="user-attending">
   <UserCard attending_users = {attending_users} />
   </div>

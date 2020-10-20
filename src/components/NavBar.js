@@ -29,7 +29,7 @@ console.log(this.props)
     <div>
     <ul className="navbar-nav mr-auto">
      
-      <li className="nav-item">
+      <li className="nav-item-events">
       <NavLink to="/events" className="nav-tab-events"> Find Events </NavLink> 
       </li>
       

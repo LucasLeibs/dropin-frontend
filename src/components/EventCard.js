@@ -16,21 +16,21 @@ export default class EventCard extends PureComponent {
     // }
   render() {
     const {info} = this.props;
-    const displayName = `${info.name}, ${info.sport}`;
+    const displayName = `${info.name}`;
 
     
     return (
       <div className="event-card">
+        <h5 className="event-card-title">
+          {displayName}
+        </h5>
+        <Link className="event-card-link" to={`/event/${info.id}`}>Details</Link > 
         <div>
-          {displayName} |{' '}
-        {/* <button onClick={()=> this.handleClick(info)}> */}
-       
-        </div>
         <img width={240} src={info.image} />
+        </div>
         <div>
         
-    
-           <Link to={`/event/${info.id}`}>Details</Link > 
+  
       
        </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from './logo.svg';
+import logo from './drop_in.logo.png';
 import './App.css';
 import MapContainer from './containers/MapContainer'
 import {BrowserRouter, Switch, Route} from "react-router-dom"
@@ -116,11 +116,15 @@ componentDidMount() {
           const event = this.state.allEvents.find(e => e.id === parseInt(EventId))
          
           return event ?  <EventShowPage {...props} user = {this.state.user} event = {event} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>
-          : "Loading..." 
+          : <div className="loading-div"> <h1>Loading . . .</h1><img className="loading" src={logo}></img>
+         
+          </div> 
         }} />
       </Switch>
       
-
+        <footer className="main-footer">
+          <p><a className="att-link" href="https://www.vecteezy.com/free-vector/baseball">Baseball Vectors by Vecteezy</a></p>
+        </footer>
       </div>
      </BrowserRouter>
  

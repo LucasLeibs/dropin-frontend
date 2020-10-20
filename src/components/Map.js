@@ -12,7 +12,7 @@ class Map extends React.Component {
         viewport : {
     longitude:-94.692584,
     latitude: 42.188877,
-    zoom: 3.5
+    zoom: 2
     },
   popupInfo: null
 }
@@ -73,7 +73,6 @@ class Map extends React.Component {
           ref={this.geocoderContainerRef}
           style={{
             height: 100,
-            
             background: "white",
             display: "flex",
             alignItems: "center",
