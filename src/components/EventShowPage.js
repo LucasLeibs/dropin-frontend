@@ -122,7 +122,7 @@ class EventShowPage extends React.Component {
         <header className="header"><h1 className="event-h1">{name}
         {this.state.joined === true ? <button className="event-button" onClick={()=> this.joinEvent()}>Joined {check} </button> : <button className="event-button" onClick={()=> this.joinEvent()}>Join Event</button> }
         </h1>
-        <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
+        <Alert className="alert" color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
       You are already attending this event!
     </Alert>
   <h6 className="event-p">{calendar}  {moment(date).format("MMM Do")}<br></br>{clock} {moment({time}).format('LT')}<br></br> {pin}<a href={`https://maps.google.com/?q=${address}, ${city}, ${state}`}>{address}, {city}, {state}, {zipcode}</a></h6>
@@ -130,6 +130,7 @@ class EventShowPage extends React.Component {
   </header>
   <aside className="sidebar">
     {this.props.event.image === null ? <img className="event-image-default" src="https://media.istockphoto.com/photos/various-sport-equipments-on-grass-picture-id949190756?k=6&m=949190756&s=612x612&w=0&h=dNek5l5xc68G0gCZv-fe0vHP8kjDpAYFrRnSPh8iLyc=" alt="event pic"></img> : <img className="event-image" src={this.props.event.image} alt="event pic"></img>}
+ 
   </aside>
   <article className="event-content">
       <br></br>

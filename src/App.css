@@ -424,7 +424,7 @@ margin-bottom: 10px;
 }
 
 .event-image {
-  margin-top: 10px;
+  margin-top: 37px;
   z-index: 5;
   width: 500px;
   box-shadow: 0 10px 12px rgba(0,0,0,0.25), 
@@ -434,8 +434,9 @@ margin-bottom: 10px;
 }
 
 .event-image-default {
+  
   background : none;
-  margin-top: 10px;
+  margin-top: 37px;
   z-index: 5;
   width: 500px;
   
@@ -540,6 +541,7 @@ margin: 0;
   background:#faf7f8;
   align-content: center;
   align-items: center;
+  
 }
 .header {
   background:#f2edef;
@@ -793,6 +795,10 @@ margin-bottom: 10px
 }
 .owner-card-body:hover {
   width: 105%;
+ 
+}
+.alert {
+  font-size: 16px;
 }
 .event-info {
   font-size: 24px;
