@@ -135,7 +135,7 @@ handleEventChange=(e) => {
       </Row>
       <FormGroup>
       <Label className="event-label" for="exampleAddress">Cover Image</Label>
-      <Input className="input-field" type="text" name="image" id="exampleAddress" placeholder="1234 Main St" onChange={this.handleEventChange} value={this.state.image}/>
+      <Input className="input-field" type="text" name="image" id="exampleAddress" placeholder="google image url"onChange={this.handleEventChange} value={this.state.image}/>
     </FormGroup>
     <FormGroup check>
             <Label check>

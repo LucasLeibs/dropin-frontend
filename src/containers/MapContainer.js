@@ -21,7 +21,7 @@ render() {
         <div className="map">
 
         <Map pins = {this.state.pins} />
-        
+       
         </div>
     )
 }

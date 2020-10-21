@@ -56,23 +56,24 @@
     
   }
 .nav-item-ml-auto {
-  margin-left:1500px;
+  margin-left:820px;
 }
 
 .nav-item-logout {
-  margin-left: 1050px;
+  margin-left: 10px;
 }
 .nav-item-events {
-margin-left: 125px;
+margin-left: 150px;
 }
 
 .logo {
     z-index: 2;
     height: 100px;
     position: absolute;
-    width: 110px;
-    height: 110px;
+    width: 140px;
+    height: 140px;
     top: -15px;
+    margin-right: 10px;
    
 }
 .navbar a:hover {
@@ -96,17 +97,115 @@ margin-left: 125px;
   /* HOME PAGE */
   
   .HomePage {
-   
+   min-height: 100vh;
     padding: 0px 20px;
     display: grid;
     grid-template-columns:  20% 20% 20% 20% 20%;
     grid-template-rows: 20% 20% 20% 20% 20% ;
   }
+  @media only screen and (min-width: 1450px) {
+    /* For mobile phones: */
+    .body {
+      margin: 0;
+      font-size: 1.1em;
+      line-height: 1.5em;
+
+    }
+    
+     .HomePage {
+      padding: 0px 20px;
+      display: grid;
+      grid-template-columns:  20% 20% 20% 20% 20%;
+      grid-template-rows: 20% 20% 20% 20% 20% ;
+    }
+  
+    
+    .welcome-message {
+      color:#1A0035;
    
+   margin-left: 150px;
+    
+   
+  
+    }
+    .home-pic-div {
+     
+      height: auto;
+      padding: 10px
+     }
+     
+     .home-pic-div2 {
+      max-width:100%;
+      height: auto;
+      padding: 10px;
+     
+     }
+     .home-pic-div3 {
+      max-width:100%;
+      height: auto;
+      padding: 10px;
+      
+     }
+     .home-p {
+    margin: 0;
+    padding: 1em 0
+    }
+
+    .join-button {
+  
+    height: 75px;
+      font-size: 20px
+    }
+  }
    .home-pic {
      margin-top: 30px;
   width: 500px;
+   
+   
+   }
+   .home-pic-div {
+    grid-column-start: 3;
+    margin-top: 110px;
+    grid-row-start: 1;
+    max-width:100%;
+    height: auto;
+    padding: 10px
+   }
+   
+   .home-pic-div2 {
     grid-column-start: 4;
+    grid-row-start: 1;
+    margin-top: 70px;
+    height: 300px;
+    max-width:100%;
+    height: auto;
+    padding: 10px;
+   
+   }
+   .home-pic-div3 {
+    grid-column-start: 5;
+    grid-row-start: 1;
+    
+   margin-top: 110px;
+    max-width:100%;
+    height: auto;
+    padding: 10px;
+  
+   }
+   /* .home-pic-div4 {
+    grid-column-start: 5;
+ width: 350px;
+ 
+ max-width:100%;
+ height: auto;
+   } */
+
+   .home-pic1 {
+    
+  width: 100%;
+  
+  border-radius: 8px;
+   
    }
    .logo-home {
      width: 100px;
@@ -115,38 +214,37 @@ margin-left: 125px;
      
  
   .welcome-message {
-    color:#60615f;
-    grid-column-start:2;
-    grid-column-end:4;
- 
+    text-align:center;
+    color:#1A0035;
+    grid-column-start:1;
+    grid-column-end:3;
+    margin-left: 0px;
     grid-row-start:2 ;
+    max-width:100%;
+    height: auto;
   }
  
   
   .home-p {
-   
-    grid-column-start: 2;
-    grid-column-end: 3;
-  
     font-size: 14px;
     font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.5;
-   
   }
   .join-button {
-    grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start:3;
   height: 75px;
-  
- 
     font-size: 20px
-    
-   
-
   }
+
+
+  /* <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/xUOrw77llIWxXWwS2I" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/adidas-football-xUOrw77llIWxXWwS2I">via GIPHY</a></p> */
 /* MAP STYLING */
+.map {
+  color: #1A0035;
+  text-align: center
+}
 .event-card {
     font-size: 11px;
     font-weight: bold;
@@ -182,8 +280,8 @@ margin-top: 100px;
 
 margin: 0 auto;
 
-width: 800px;
-height: 500px;
+width: 1000px;
+height: 525px;
 }
 
 /* .geocoder {
@@ -502,6 +600,7 @@ margin: 0;
 
 /* make a grid */
 .wrapper {
+  color: #1A0035;
   max-width: 940px;
   margin: 0 auto;
   display: grid;
@@ -773,7 +872,20 @@ color: red;
   background-color: transparent;
 }
 .main-footer {
+ position: fixed;
+ left: 0;
+ bottom:0;
+  height: 75px;
+  width: 100%;
+
+  background-color: #1A0035;
+  color: white;
+  text-align: center;
+
+}
+.main-footer-home {
   position: fixed;
+
   left: 0;
   bottom: 0;
   height: 59px;
@@ -781,7 +893,7 @@ color: red;
   background-color: #1A0035;
   color: white;
   text-align: center;
-  margin-top: 50px;
+
 }
 
 .att-link {

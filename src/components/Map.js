@@ -69,6 +69,8 @@ class Map extends React.Component {
         console.log("pins",this.props.pins)
         return (
             <div className="mapContainer">
+                <h1>Search Events</h1>
+                <p className="event-p">Search by city and find events near you!</p>
                  <div
           ref={this.geocoderContainerRef}
           style={{

@@ -163,6 +163,7 @@ class EventShowPage extends React.Component {
                {address}, {city}, {state}, {zipcode}
                <button OnClick={()=> this.joinEvent}>Join Event</button> */}
             
+            
         </div>
         )
     }

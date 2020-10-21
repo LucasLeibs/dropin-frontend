@@ -19,6 +19,7 @@ render () {
     return (
         <div>
             <Auth handleSuccessfulSignup={this.handleSuccessfulSignup}/>
+         
         </div>
     )
 }

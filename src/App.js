@@ -131,10 +131,19 @@ componentDidMount() {
           
         }} />
       </Switch>
-      
-        <footer className="main-footer">
-          <p><a className="att-link" href="https://www.vecteezy.com/free-vector/baseball">Baseball Vectors by Vecteezy</a></p>
-        </footer>
+      <div className="sweet-loading">
+        <div className="spinner">
+      <ClipLoader 
+       
+        size={50}
+        color={"#123abc"}
+        loading={this.state.loading}
+      />
+      </div>
+    </div>
+    <footer className="main-footer">
+        <p><a className="att-link" href="https://www.vecteezy.com/free-vector/baseball">Made by Lucas Leiberman with React</a></p>
+      </footer>
       </div>
      </BrowserRouter>
  
