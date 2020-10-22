@@ -214,11 +214,11 @@ margin-left: 150px;
      
  
   .welcome-message {
-    text-align:center;
+    /* text-align:center; */
     color:#1A0035;
     grid-column-start:1;
     grid-column-end:3;
-    margin-left: 0px;
+    margin-left: 100px;
     grid-row-start:2 ;
     max-width:100%;
     height: auto;
