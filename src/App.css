@@ -151,15 +151,17 @@ margin-left: 150px;
     padding: 1em 0
     }
 
+   
     .join-button {
-  
-    height: 75px;
-      font-size: 20px
-    }
+      height: 75px;
+      font-size: 20px;
+     
   }
+}
    .home-pic {
      margin-top: 30px;
   width: 500px;
+
    
    
    }
@@ -169,10 +171,15 @@ margin-left: 150px;
     grid-row-start: 1;
     max-width:100%;
     height: auto;
-    padding: 10px
+    padding: 10px;
+    animation-name: join;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    text-align: center;
    }
    
    .home-pic-div2 {
+    text-align: center;
     grid-column-start: 4;
     grid-row-start: 1;
     margin-top: 70px;
@@ -180,9 +187,14 @@ margin-left: 150px;
     max-width:100%;
     height: auto;
     padding: 10px;
+    animation-name: join;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    
    
    }
    .home-pic-div3 {
+    text-align: center;
     grid-column-start: 5;
     grid-row-start: 1;
     
@@ -190,6 +202,9 @@ margin-left: 150px;
     max-width:100%;
     height: auto;
     padding: 10px;
+    animation-name: join;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
   
    }
    /* .home-pic-div4 {
@@ -205,8 +220,27 @@ margin-left: 150px;
   width: 100%;
   
   border-radius: 8px;
-   
    }
+
+   .home-pic1:hover {
+     align-content: center;
+
+   }
+  
+   .img-title {
+     color:#1A0035
+   }
+    .img-title1 {
+   
+
+     color:#1A0035 ;
+   }
+  
+   .img-title2 {
+  
+
+     color: #1A0035;
+   } 
    .logo-home {
      width: 100px;
      margin-left: 50px;
@@ -231,11 +265,16 @@ margin-left: 150px;
     line-height: 20px;
     letter-spacing: 0.5;
   }
+
+
+  
+  
   .join-button {
     grid-column-end: 3;
     grid-row-start:3;
   height: 75px;
-    font-size: 20px
+    font-size: 20px;
+    
   }
 
 
@@ -878,11 +917,34 @@ color: red;
   height: 75px;
   width: 100%;
 
-  background-color: #1A0035;
+ 
   color: white;
   text-align: center;
+  background: linear-gradient(270deg, #1e013c, #421e67, #4e306e, #1e013c);
+    background-size: 800% 800%;
 
+    -webkit-animation: AnimationName 8s ease infinite;
+    -moz-animation: AnimationName 8s ease infinite;
+    animation: AnimationName 8s ease infinite;
 }
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+
 .main-footer-home {
   position: fixed;
 
@@ -946,6 +1008,10 @@ margin-bottom: 10px
   letter-spacing: 1px;
   transition: transform 80ms ease-in;
    
+}
+
+.profile-button:hover {
+  background: #9b8d8b
 }
 
 .profile-event-card-body {

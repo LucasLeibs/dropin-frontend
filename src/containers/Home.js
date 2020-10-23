@@ -22,7 +22,7 @@ class Home extends React.Component {
       </svg>
         return (
             <div className="HomePage">
-             
+           
                 <div className="welcome-message"><h1>{people} Join the Community<br></br> {square}   Create Events<br></br>{drop} Drop-In & Play</h1>
                  <p className="home-p"> Become a member of Drop-In Sports and become connected<br></br>to a network dedicated to finding you pick-up games to join.</p>
                  <button onClick={()=> this.joinUp()}className="join-button">Join {peep}</button>
@@ -31,13 +31,15 @@ class Home extends React.Component {
                  </div>
                  <div className="home-pic-div">
             <img className="home-pic1" src="https://images.unsplash.com/photo-1553524229-2695bb76bce9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=633&q=80"></img>
+            {/* <h1 className= "img-title"> JOIN</h1> */}
             </div>
                  <div className="home-pic-div2">
             <img className="home-pic1" src="https://images.unsplash.com/photo-1511110011044-5ce8fb4e7b61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"></img>
-            
+            {/* <h1 className= "img-title1"> DROP-IN</h1> */}
             </div>
                  <div className="home-pic-div3">
             <img className="home-pic1" src="https://images.unsplash.com/photo-1525914813433-886dc018469d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"></img>
+            {/* <h1 className= "img-title2">PLAY</h1> */}
             </div>
                  {/* <div className="home-pic-div4">
             <img className="home-pic1" src="https://images.unsplash.com/photo-1583275478661-1c31970669fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"></img>
