@@ -29,7 +29,22 @@ class EventShowPage extends React.Component {
         commentsOpen: !this.state.commentsOpen
       })
     }
-    
+       convertTime = (timeToConvert) => {
+      let time = timeToConvert.split(":");
+      let hours = +time[0];
+      let minutes = +time[1];
+      let timeValue;
+      if (hours > 0 && hours <= 12) {
+        timeValue = "" + hours;
+      } else if (hours > 12) {
+        timeValue = "" + (hours - 12);
+      } else if (hours === 0) {
+        timeValue = "12";
+      }
+      timeValue += minutes < 10 ? ":0" + minutes : ":" + minutes;
+      timeValue += hours >= 12 ? " PM" : " AM";
+      return timeValue;
+    };
     
     joinEvent= (e) => {
       // let ids = attending_events.map(event => event.id)
@@ -125,11 +140,11 @@ class EventShowPage extends React.Component {
         <Alert className="alert" color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
       You are already attending this event!
     </Alert>
-  <h6 className="event-p">{calendar}  {moment(date).format("MMM Do")}<br></br>{clock} {moment({time}).format('LT')}<br></br> {pin}<a href={`https://maps.google.com/?q=${address}, ${city}, ${state}`}>{address}, {city}, {state}, {zipcode}</a></h6>
+  <h6 className="event-p">{calendar}  {moment(date).format("MMM Do")}<br></br>{clock} {this.convertTime(time)}<br></br> {pin}<a href={`https://maps.google.com/?q=${address}, ${city}, ${state}`}>{address}, {city}, {state}, {zipcode}</a></h6>
   <p className="event-captain"> Host: {person}{user.first_name} {user.last_name} </p>
   </header>
   <aside className="sidebar">
-    {this.props.event.image === null ? <img className="event-image-default" src="https://media.istockphoto.com/photos/various-sport-equipments-on-grass-picture-id949190756?k=6&m=949190756&s=612x612&w=0&h=dNek5l5xc68G0gCZv-fe0vHP8kjDpAYFrRnSPh8iLyc=" alt="event pic"></img> : <img className="event-image" src={this.props.event.image} alt="event pic"></img>}
+    {this.props.event.image === '' ? <img className="event-image-default" src="https://media.istockphoto.com/photos/various-sport-equipments-on-grass-picture-id949190756?k=6&m=949190756&s=612x612&w=0&h=dNek5l5xc68G0gCZv-fe0vHP8kjDpAYFrRnSPh8iLyc=" alt="event pic"></img> : <img className="event-image" src={this.props.event.image} alt="event pic"></img>}
  
   </aside>
   <article className="event-content">

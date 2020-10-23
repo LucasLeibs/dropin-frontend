@@ -84,6 +84,22 @@ this.setState({ isOwnerOpen: !this.state.isOwnerOpen})
     //   }
     
     // }
+    convertTime = (timeToConvert) => {
+      let time = timeToConvert.split(":");
+      let hours = +time[0];
+      let minutes = +time[1];
+      let timeValue;
+      if (hours > 0 && hours <= 12) {
+        timeValue = "" + hours;
+      } else if (hours > 12) {
+        timeValue = "" + (hours - 12);
+      } else if (hours === 0) {
+        timeValue = "12";
+      }
+      timeValue += minutes < 10 ? ":0" + minutes : ":" + minutes;
+      timeValue += hours >= 12 ? " PM" : " AM";
+      return timeValue;
+    };
     
     render () {
        const {time} = this.state.events
@@ -164,7 +180,7 @@ this.setState({ isOwnerOpen: !this.state.isOwnerOpen})
     <h5>{event.name} <svg onClick={() => this.deleteOwnedEvent(event.id)} id={event.id} width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
   </svg></h5>
-   <p className="paragraph"> {clock}{event.time}<br></br>
+   <p className="paragraph"> {clock}{this.convertTime(event.time)}<br></br>
     {calendar}{event.date}<br></br>
     <Link to={`/event/${event.id}`}>Details</Link > 
     </p>
@@ -198,7 +214,7 @@ this.setState({ isOwnerOpen: !this.state.isOwnerOpen})
     <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
   </svg></h5>
   
-   <p className="paragraph"> {clock}{attending.event.time}<br></br>
+   <p className="paragraph"> {clock}{this.convertTime(attending.event.time)}<br></br>
     {calendar}{attending.event.date}<br></br>
     <Link to={`/event/${attending.event.id}`}>Details</Link > 
     </p>

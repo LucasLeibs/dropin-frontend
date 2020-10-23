@@ -987,6 +987,9 @@ margin-bottom: 10px
 }
 .owner-card-body:hover {
   width: 105%;
+  background: #e9ecf5;
+  border: none
+
  
 }
 .alert {

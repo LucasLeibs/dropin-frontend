@@ -40,7 +40,7 @@ console.log(this.props)
       <NavLink to="/profile" className="nav-tab-profile"> Profile </NavLink> 
       </li>
       <li className="nav-item-logout">
-      <NavLink onClick={() => this.handleLogoutClick()} to="/auth" className="nav-tab-events">Logout {arrow} </NavLink> 
+      <NavLink onClick={() => this.handleLogoutClick()} to="/" className="nav-tab-events">Logout {arrow} </NavLink> 
       </li>
     </ul>
     </div>
