@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Drop in Sports 
+Application where users can find, create, and join pick-up sports events 
+
+## Backend
+https://github.com/LucasLeibs/dropin-backend
 
 ## Available Scripts
 
